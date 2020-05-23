@@ -14,7 +14,7 @@ class TrainSetLoader():
         torch.manual_seed(1)
         if data_type == "train":
             data_load = torch.utils.data.DataLoader(
-                datasets.dataset('../data', train=True, download=True,
+                datasets.MNIST('../data', train=True, download=True,
                                 transform=transforms.Compose([
                                     transforms.RandomRotation((-0.7,0.7), fill=(1,)),
                                     transforms.ToTensor(),
@@ -23,7 +23,7 @@ class TrainSetLoader():
                 batch_size=self.batch_size, shuffle=True, **self.kwargs)
         else:
             data_load = torch.utils.data.DataLoader(
-                datasets.dataset('../data', train=False, transform=transforms.Compose([
+                datasets.MNIST('../data', train=False, transform=transforms.Compose([
                                     transforms.ToTensor(),
                                     transforms.Normalize((0.1307,), (0.3081,))
                                 ])),
